@@ -51,11 +51,9 @@ public class GameManager : MonoBehaviour, IObservableListener
     private void Load()
     {
         var playerState = saveManager.Load();
-        var characterController = player.GetComponent<CharacterController>();
-        characterController.enabled = false;
-        player.transform.position = playerState.Position;
-        player.transform.rotation = playerState.Rotation;
-        characterController.enabled = true;
+        var _player = player.GetComponent<Player>();
+        _player.SetPosition(playerState.Position);
+        _player.SetRotation(playerState.Rotation);
     }
 
     private void CacheCheckpoints()
